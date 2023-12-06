@@ -14,10 +14,10 @@ datasource db {
 model Category {
   id Int @id @default(autoincrement())
   name String
-  tittle String
+  title String
   content String @db.Text
   imageUrl String?
-  createdAt DateTime @default(now())
+  createdAt DateTime @default(now()) @map(name: "created_at")
   catalog_newsId Int?
   Catalog_news Catalog_news? @relation(fields: [catalog_newsId], references: [id])
 }

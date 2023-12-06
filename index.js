@@ -1,7 +1,8 @@
 require('dotenv').config()
 const express = require('express')
 const cors = require("cors")
-const { prisma } = require("./config/prisma")
+const { catalogRoutes } = require('./routes/catalog_news.routes.js')
+const { productRoutes, categoryRoutes } = require('./routes/category.routes.js')
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -13,24 +14,11 @@ app.get("/", async(req, res) => {
     res.send("here is the response")
 })
 
-// Catalog_news routes
+// catalog routes
+app.use("/catalog_news", catalogRoutes)
 
-// get all Catalog_news 
-app.get("/Catalog_newss", async(req, res) => {
-    const Catalog_news = await prisma.catalog_news.findMany()
-    res.status(200).send(Catalog_news);
-})
-
-// get catalog_news by id
-app.get("/Catalog_newss/:id", async(req, res) => {
-    const Catalog_news = await prisma.catalog_news.findUnique({
-        where: {
-            id: parseInt(req.params.id),
-        },
-    })
-    if (!Catalog_news) res.status(404).send("Catalog not found")
-    else res.status(200).send(Catalog_news)
-})
+// category routes
+app.use("/category", categoryRoutes)
 
 app.all("*", async(req, res) => {
     res.json({
