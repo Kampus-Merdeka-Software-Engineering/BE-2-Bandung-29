@@ -4,7 +4,7 @@
     "description": "capstone project by Group 29 RevoU Section Bandung",
     "main": "index.js",
     "scripts": {
-        "start": "nodemon index.js"
+        "start": "node index.js"
     },
     "keywords": [
         "express",
