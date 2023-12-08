@@ -38,7 +38,7 @@ CREATE TABLE `Message` (
 
 -- AddForeignKey
 ALTER TABLE Category
-ADD CONSTRAINT fk_catalog_news
-FOREIGN KEY (catalog_newsId) 
+ADD CONSTRAINT fk_Catalog_news
+FOREIGN KEY (Catalog_newsId) 
 REFERENCES Catalog_news(id);
 ON DELETE SET NULL ON UPDATE CASCADE;

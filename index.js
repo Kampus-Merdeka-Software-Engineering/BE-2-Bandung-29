@@ -3,6 +3,7 @@ const express = require('express')
 const cors = require("cors")
 const { catalogRoutes } = require('./routes/catalog_news.routes.js')
 const { productRoutes, categoryRoutes } = require('./routes/category.routes.js')
+const { messageRoutes } = require('./routes/message.routes.js')
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -19,6 +20,9 @@ app.use("/catalog_news", catalogRoutes)
 
 // category routes
 app.use("/category", categoryRoutes)
+
+// message routes
+app.use("/message", messageRoutes)
 
 app.all("*", async(req, res) => {
     res.json({
