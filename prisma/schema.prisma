@@ -8,7 +8,7 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url      = env("mysql://root:upnveteranjakarta@localhost:3306/db-news?schema=public")
+  url      = env("DATABASE_URL="mysql://root:E4E-33abDGH1Af5GGh2hgABD2Bhg5deb@monorail.proxy.rlwy.net:14098/railway?schema=public"")
 }
 
 //  Model DataBase 
