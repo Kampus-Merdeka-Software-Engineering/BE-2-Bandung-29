@@ -1,17 +1,15 @@
 const express = require("express");
 const messageRoutes = express.Router();
-const { prsima, prisma } = require("../config/prisma");
+const { prisma } = require("../config/prisma");
 
 //READ
-messageRoutes.get("/", async (req, res) => {
+messageRoutes.get("/", async(req, res) => {
     const messages = await prisma.message.findMany();
     res.status(200).send(messages);
 });
 
-module.exports = { messageRoutes };
-
 // CREATE
-messageRoutes.post("/", async (req, res) => {
+messageRoutes.post("/", async(req, res) => {
     const { name, email, message } = req.body
     const newMessage = await prisma.message.create({
         data: {
@@ -25,3 +23,6 @@ messageRoutes.post("/", async (req, res) => {
         data: newMessage,
     });
 });
+
+
+module.exports = { messageRoutes };
